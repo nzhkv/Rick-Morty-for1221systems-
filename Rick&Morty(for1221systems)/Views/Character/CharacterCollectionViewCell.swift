@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 /// Single cell for a character
 final class CharacterCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "CharacterCollectionViewCell"
@@ -36,8 +34,6 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)

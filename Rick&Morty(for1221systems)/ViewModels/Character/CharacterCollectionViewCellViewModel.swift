@@ -40,8 +40,6 @@ final class CharacterCollectionViewCellViewModel: Hashable, Equatable {
                 completion(.failure(error ?? URLError(.badServerResponse)))
                 return
             }
-//            let value = data as NSData
-//            self?.imageDataCache.setObject(value, forKey: key)
             completion(.success(data))
         }
         task.resume()
