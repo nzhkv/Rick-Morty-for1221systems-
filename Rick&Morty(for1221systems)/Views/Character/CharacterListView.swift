@@ -14,7 +14,6 @@ protocol CharacterListViewDelegate: AnyObject {
     )
 }
 
-/// View that handles showing list of characters, loader, etc.
 final class CharacterListView: UIView {
 
     public weak var delegate: CharacterListViewDelegate?
@@ -31,7 +30,7 @@ final class CharacterListView: UIView {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.alpha = 0
@@ -43,8 +42,6 @@ final class CharacterListView: UIView {
                                 withReuseIdentifier: FooterLoadingCollectionReusableView.identifier)
         return collectionView
     }()
-
-    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)

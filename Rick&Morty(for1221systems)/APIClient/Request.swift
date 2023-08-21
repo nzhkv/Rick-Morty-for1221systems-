@@ -7,23 +7,17 @@
 
 import Foundation
 
-/// Object that represents a singlet API call
 final class Request {
-    /// API Constants
     private struct Constants {
         static let baseUrl = "https://rickandmortyapi.com/api"
     }
 
-    /// Desired endpoint
     let endpoint: Endpoint
 
-    /// Path components for API, if any
     private let pathComponents: [String]
 
-    /// Query arguments for API, if any
     private let queryParameters: [URLQueryItem]
 
-    /// Constructed url for the api request in string format
     private var urlString: String {
         var string = Constants.baseUrl
         string += "/"
@@ -48,21 +42,12 @@ final class Request {
         return string
     }
 
-    /// Computed & constructed API url
     public var url: URL? {
         return URL(string: urlString)
     }
 
-    /// Desired http method
     public let httpMethod = "GET"
 
-    // MARK: - Public
-
-    /// Construct request
-    /// - Parameters:
-    ///   - endpoint: Target endpoint
-    ///   - pathComponents: Collection of Path components
-    ///   - queryParameters: Collection of query parameters
     public init(
         endpoint: Endpoint,
         pathComponents: [String] = [],
@@ -73,8 +58,6 @@ final class Request {
         self.queryParameters = queryParameters
     }
 
-    /// Attempt to create request
-    /// - Parameter url: URL to parse
     convenience init?(url: URL) {
         let string = url.absoluteString
         if !string.contains(Constants.baseUrl) {
@@ -102,7 +85,6 @@ final class Request {
             if !components.isEmpty, components.count >= 2 {
                 let endpointString = components[0]
                 let queryItemsString = components[1]
-                // value=name&value=name
                 let queryItems: [URLQueryItem] = queryItemsString.components(separatedBy: "&").compactMap({
                     guard $0.contains("=") else {
                         return nil
@@ -125,8 +107,6 @@ final class Request {
         return nil
     }
 }
-
-// MARK: - Request convenience
 
 extension Request {
     static let listCharactersRequests = Request(endpoint: .character)

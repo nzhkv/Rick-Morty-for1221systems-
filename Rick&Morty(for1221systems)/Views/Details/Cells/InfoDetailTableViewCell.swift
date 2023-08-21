@@ -65,7 +65,7 @@ class InfoDetailTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.layer.backgroundColor = UIColor(red: 0.149, green: 0.165, blue: 0.22, alpha: 1).cgColor
         contentView.layer.cornerRadius = 16
-        
+        isUserInteractionEnabled = false
         contentView.addSubviews(speciesLabel, speciesDetailLabel, typeLabel, typeDetailLabel, genderLabel, genderDetailLabel)
         
         NSLayoutConstraint.activate([

@@ -53,6 +53,7 @@ extension CharacterDetailViewViewModel: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
+            print(String(describing: character.episode))
             return ""
         } else if section == 1 {
             return "Info"
@@ -125,9 +126,9 @@ extension CharacterDetailViewViewModel: UITableViewDelegate, UITableViewDataSour
                 for: indexPath) as? OriginDetailTableViewCell else {
                 fatalError("Unsupported cell")
             }
-            
+            let firstWorld = character.origin.name.components(separatedBy: " ").first ?? ""
             cell.configure(with: OriginDetailTableViewCellViewModel(
-                planetLabel: character.origin.name
+                planetLabel: firstWorld
             ))
             
             return cell

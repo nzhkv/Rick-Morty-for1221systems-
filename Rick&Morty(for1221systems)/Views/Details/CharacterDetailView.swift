@@ -14,6 +14,7 @@ class CharacterDetailView: UIView {
     
     private let tableView: UITableView = {
         let table = UITableView()
+        table.separatorStyle = .none
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.register(ImageTableViewCell.self, forCellReuseIdentifier: ImageTableViewCell.cellIdentifier)
         table.register(InfoDetailTableViewCell.self, forCellReuseIdentifier: InfoDetailTableViewCell.cellIdentifier)

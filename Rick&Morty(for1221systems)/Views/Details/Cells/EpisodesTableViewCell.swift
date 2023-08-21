@@ -37,7 +37,7 @@
 //    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 //        super.init(style: style, reuseIdentifier: reuseIdentifier)
 //        backgroundColor = .green
-//        
+//        isUserInteractionEnabled = false
 //        contentView.addSubviews(nameLabel, episodeLabel, dateLabel)
 //        
 //        

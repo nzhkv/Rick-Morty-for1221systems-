@@ -12,8 +12,6 @@ final class CharacterCollectionViewCellViewModel: Hashable, Equatable {
     private let characterStatus: CharacterStatus
     private let characterImageUrl: URL?
 
-    // MARK: - Init
-
     init(
         characterName: String,
         characterStatus: CharacterStatus,
@@ -44,8 +42,6 @@ final class CharacterCollectionViewCellViewModel: Hashable, Equatable {
         }
         task.resume()
     }
-
-    // MARK: - Hashable
 
     static func == (lhs: CharacterCollectionViewCellViewModel, rhs: CharacterCollectionViewCellViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue

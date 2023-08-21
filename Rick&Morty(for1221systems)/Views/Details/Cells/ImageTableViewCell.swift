@@ -37,8 +37,8 @@ class ImageTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        isUserInteractionEnabled = false
         backgroundColor = UIColor(red: 0.016, green: 0.047, blue: 0.118, alpha: 1)
-        
         contentView.addSubviews(cellImageView, nameLabel, statusLabel)
         
         NSLayoutConstraint.activate([

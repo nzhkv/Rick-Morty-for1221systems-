@@ -8,16 +8,17 @@
 import UIKit
 
 final class CharacterViewController: UIViewController, CharacterListViewDelegate {
-
+    
     private let characterListView = CharacterListView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0.016, green: 0.047, blue: 0.118, alpha: 1)
         title = "Characters"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         setUpView()
     }
-
+    
     private func setUpView() {
         characterListView.delegate = self
         view.addSubview(characterListView)
@@ -28,8 +29,6 @@ final class CharacterViewController: UIViewController, CharacterListViewDelegate
             characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
-
-    // MARK: - RMCharacterListViewDelegate
     
     /// открываем detail controller
     func characterListView(_ characterListView: CharacterListView, didSelectCharacter character: Character) {

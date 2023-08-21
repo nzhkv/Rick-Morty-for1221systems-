@@ -7,27 +7,18 @@
 
 import Foundation
 
-/// Primary API service object to get Rick and Morty data
 final class Service {
-    /// Shared singleton instance
     static let shared = Service()
 
     private let cacheManager = APICacheManager()
 
-    /// Privatized constructor
     private init() {}
 
-    /// Error types
     enum RMServiceError: Error {
         case failedToCreateRequest
         case failedToGetData
     }
 
-    /// Send Rick and Morty API Call
-    /// - Parameters:
-    ///   - request: Request instance
-    ///   - type: The type of object we expect to get back
-    ///   - completion: Callback with data or error
     public func execute<T: Codable>(
         _ request: Request,
         expecting type: T.Type,
@@ -58,7 +49,6 @@ final class Service {
                 return
             }
 
-            // Decode response
             do {
                 let result = try JSONDecoder().decode(type.self, from: data)
                 self?.cacheManager.setCache(
@@ -75,7 +65,6 @@ final class Service {
         task.resume()
     }
 
-    // MARK: - Private
 
     private func request(from rmRequest: Request) -> URLRequest? {
         guard let url = rmRequest.url else {
