@@ -67,20 +67,20 @@ class ImageTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
+        cellImageView.image = nil
         nameLabel.text = nil
         statusLabel.text = nil
     }
 
-    public func configure(with viewModel: CharacterCollectionViewCellViewModel) {
-        nameLabel.text = viewModel.characterName
-        statusLabel.text = viewModel.characterStatusText
+    public func configure(with viewModel: ImageTableViewCellViewModel) {
+        nameLabel.text = viewModel.nameLabel
+        statusLabel.text = viewModel.statusLabel
         viewModel.fetchImage { [weak self] result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
                     let image = UIImage(data: data)
-                    self?.imageView.image = image
+                    self?.cellImageView.image = image
                 }
             case .failure(let error):
                 print(String(describing: error))

@@ -47,9 +47,18 @@ extension CharacterDetailViewViewModel: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ImageTableViewCell.cellIdentifier, for: indexPath) as! ImageTableViewCell
-            cell.nameLabel.text = character.name
-            cell.statusLabel.text = character.status.rawValue
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ImageTableViewCell.cellIdentifier,
+                for: indexPath) as? ImageTableViewCell else {
+                    fatalError("Unsupported cell")
+                }
+            cell.configure(with: ImageTableViewCellViewModel(
+                cellImageView: URL(string: character.image),
+                nameLabel: character.name, statusLabel:
+                    character.status.rawValue))
+//            cell.nameLabel.text = character.name
+//            cell.statusLabel.text = character.status.rawValue
+            
             return cell
         }
         
