@@ -24,8 +24,8 @@ final class CharacterDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        title = viewModel.title
+        view.backgroundColor = UIColor(red: 0.016, green: 0.047, blue: 0.118, alpha: 1)
+//        title = viewModel.title
         addConstraints()
         
     }

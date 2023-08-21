@@ -16,6 +16,9 @@ class CharacterDetailView: UIView {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.register(ImageTableViewCell.self, forCellReuseIdentifier: ImageTableViewCell.cellIdentifier)
+        table.register(InfoDetailTableViewCell.self, forCellReuseIdentifier: InfoDetailTableViewCell.cellIdentifier)
+        table.register(OriginDetailTableViewCell.self, forCellReuseIdentifier: OriginDetailTableViewCell.cellIdentifier)
+//        table.register(EpisodesTableViewCell.self, forCellReuseIdentifier: EpisodesTableViewCell.cellIdentifier)
         return table
     }()
     
@@ -26,7 +29,7 @@ class CharacterDetailView: UIView {
         addSubview(tableView)
         addConstraints()
         setUpTableView()
-        tableView.backgroundColor = .yellow
+        tableView.backgroundColor = UIColor(red: 0.016, green: 0.047, blue: 0.118, alpha: 1)
     }
     
     required init?(coder: NSCoder) {
@@ -34,6 +37,7 @@ class CharacterDetailView: UIView {
     }
     
     private func setUpTableView() {
+        tableView.separatorStyle = .none
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
     }

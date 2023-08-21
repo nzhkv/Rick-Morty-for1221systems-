@@ -22,44 +22,38 @@ class ImageTableViewCell: UITableViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        label.font = UIFont(name: "Gilroy-Bold", size: 22)
         return label
     }()
     
     let statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(red: 0.278, green: 0.775, blue: 0.045, alpha: 1)
+        label.font = UIFont(name: "Gilroy-Medium", size: 16)
         return label
     }()
     
-//    init(frame: CGRect) {
-//        init(frame: frame)
-//        contentView.backgroundColor = .green
-//        contentView.addSubviews(cellImageView, nameLabel, statusLabel)
-//        addConstraints()
-////        setUpLayer()
-//    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .green
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = UIColor(red: 0.016, green: 0.047, blue: 0.118, alpha: 1)
+        
+        contentView.addSubviews(cellImageView, nameLabel, statusLabel)
+        
+        NSLayoutConstraint.activate([
+            cellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            cellImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            cellImageView.widthAnchor.constraint(equalToConstant: 148),
+            cellImageView.heightAnchor.constraint(equalToConstant: 148),
             
-            contentView.addSubviews(cellImageView, nameLabel, statusLabel)
+            nameLabel.topAnchor.constraint(equalTo: cellImageView.bottomAnchor, constant: 24),
+            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            NSLayoutConstraint.activate([
-                cellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-                cellImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-                cellImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                cellImageView.heightAnchor.constraint(equalToConstant: 148),
-                
-                nameLabel.topAnchor.constraint(equalTo: cellImageView.bottomAnchor, constant: 24),
-                nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-                nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                
-                statusLabel.topAnchor.constraint(equalTo: cellImageView.bottomAnchor, constant: 57),
-                statusLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-                statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
-            ])
-        }
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            statusLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+        ])
+    }
     
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
@@ -71,7 +65,7 @@ class ImageTableViewCell: UITableViewCell {
         nameLabel.text = nil
         statusLabel.text = nil
     }
-
+    
     public func configure(with viewModel: ImageTableViewCellViewModel) {
         nameLabel.text = viewModel.nameLabel
         statusLabel.text = viewModel.statusLabel
